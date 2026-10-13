@@ -1,0 +1,16 @@
+﻿.complete,.noOrder { display: grid; justify-items: center; align-content: center; min-height: 70vh; padding: 4rem 1.25rem 6rem; text-align: center; }
+.check { display: grid; width: 4.5rem; height: 4.5rem; place-items: center; margin-bottom: 1.4rem; border-radius: 50%; color: var(--color-pine); background: #e4ecd7; font-size: 1.8rem; }
+.eyebrow { color: var(--color-pine); font-size: .8rem; font-weight: 750; letter-spacing: .12em; }
+.complete h1,.noOrder h1 { margin-top: .8rem; font-family: var(--font-serif); font-size: clamp(3.1rem, 6vw, 5rem); font-weight: 400; line-height: 1; letter-spacing: -.05em; }
+.complete h1 em { color: var(--color-pine); font-weight: 400; }
+.lead,.noOrder > p:not(.eyebrow) { max-width: 38rem; margin-top: 1rem; color: var(--color-muted); line-height: 1.6; }
+.receipt { width: min(100%, 540px); margin-top: 2rem; padding: 1.4rem; border: 1px solid var(--color-line); border-radius: 12px; background: var(--color-surface); text-align: left; }
+.receiptTop,.total,.items > div { display: flex; justify-content: space-between; gap: 1rem; }
+.receiptTop { align-items: center; padding-bottom: .9rem; border-bottom: 1px solid var(--color-line); }
+.receiptTop span,.sentTo { color: var(--color-muted); font-size: .9rem; }
+.receiptTop strong { color: var(--color-pine); letter-spacing: .04em; }
+.sentTo { margin: .8rem 0; }
+.items { display: grid; gap: .75rem; padding: .8rem 0; border-top: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); font-size: .9rem; }
+.items small { color: var(--color-muted); }
+.total { margin-top: .9rem; font-size: 1.05rem; font-weight: 750; }
+.return,.noOrder > a { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.5rem; padding: .9rem 1.2rem; border-radius: 999px; color: white; background: var(--color-pine); font-weight: 700; }
