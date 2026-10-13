@@ -1,0 +1,425 @@
+﻿.header {
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  background: var(--color-surface);
+  box-shadow: 0 1px 0 rgb(34 41 35 / 8%);
+  transition: transform 220ms ease;
+
+  &.hidden {
+    transform: translateY(-110%);
+  }
+
+  .announcement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    min-height: 34px;
+    padding: 5px 18px;
+    color: #fffdf8;
+    background: var(--color-pine);
+    font-size: 13px;
+    letter-spacing: 0.025em;
+
+    span + span {
+      color: var(--color-leaf);
+    }
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    width: min(100% - 64px, 1420px);
+    min-height: 82px;
+    margin: 0 auto;
+  }
+
+  .brand {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-ink);
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+
+  .brandMark {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--color-leaf);
+    background: var(--color-pine);
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .brandName {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+
+    span {
+      color: var(--color-clay);
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+    }
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(18px, 2.3vw, 35px);
+  }
+
+  .navLink {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #414a42;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 5px;
+      left: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--color-pine), #88a653);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    &:hover::after,
+    &:focus-visible::after,
+    &.active::after {
+      transform: scaleX(1);
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      color: var(--color-pine);
+      text-decoration: none;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .searchForm {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: clamp(170px, 18vw, 236px);
+    min-height: 42px;
+    padding: 0 10px;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    color: var(--color-muted);
+    background: #fbfaf6;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+
+    &:focus-within {
+      border-color: var(--color-pine);
+      box-shadow: 0 0 0 3px rgb(29 65 56 / 10%);
+    }
+
+    > svg {
+      flex: 0 0 auto;
+      width: 16px;
+      height: 16px;
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-size: 13px;
+
+      &::placeholder {
+        color: #7b8278;
+      }
+    }
+
+    button {
+      display: grid;
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+
+      &:hover {
+        background: #edf0e5;
+      }
+
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  .searchToggle,
+  .menuToggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid var(--color-line);
+    border-radius: 50%;
+    background: transparent;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+
+    &:hover {
+      border-color: var(--color-pine);
+    }
+
+    svg {
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  .bagButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 13px;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    color: var(--color-ink);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 650;
+    text-decoration: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+
+    &:hover {
+      border-color: var(--color-pine);
+      background: #f3f3e9;
+      text-decoration: none;
+    }
+
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+
+    > svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .bagCount {
+    display: grid;
+    min-width: 23px;
+    height: 23px;
+    padding: 0 5px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--color-pine-dark);
+    background: var(--color-leaf);
+    font-size: 13px;
+    font-weight: 750;
+  }
+
+  .mobileSearch {
+    display: none;
+  }
+
+  @media (max-width: 76rem) {
+    .bar {
+      gap: 18px;
+      width: min(100% - 40px, 1420px);
+    }
+
+    .navigation {
+      gap: 17px;
+    }
+
+    .searchForm {
+      width: 190px;
+    }
+  }
+
+  @media (max-width: 58rem) {
+    .bar {
+      min-height: 74px;
+    }
+
+    .navigation {
+      position: absolute;
+      top: calc(100% - 1px);
+      right: 0;
+      left: 0;
+      display: none;
+      align-items: stretch;
+      flex-direction: column;
+      gap: 0;
+      padding: 8px 22px 18px;
+      border-bottom: 1px solid var(--color-line);
+      background: var(--color-surface);
+      box-shadow: 0 12px 24px rgb(23 40 30 / 10%);
+
+      &.navigationOpen {
+        display: flex;
+      }
+    }
+
+    .navLink {
+      min-height: 50px;
+      border-bottom: 1px solid #ecebe5;
+      font-size: 15px;
+
+      &::after {
+        display: none;
+      }
+
+      &:hover,
+      &:focus-visible,
+      &.active {
+        color: var(--color-pine);
+        background: #f1f3e9;
+      }
+    }
+
+    .searchForm {
+      display: none;
+    }
+
+    .searchToggle,
+    .menuToggle {
+      display: grid;
+    }
+
+    .mobileSearch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px 16px;
+      border-top: 1px solid var(--color-line);
+      background: var(--color-surface);
+
+      > svg {
+        flex: 0 0 auto;
+        width: 18px;
+        height: 18px;
+        color: var(--color-muted);
+      }
+
+      input {
+        flex: 1;
+        min-width: 0;
+        min-height: 42px;
+        padding: 0 12px;
+        border: 1px solid var(--color-line);
+        border-radius: 8px;
+        background: white;
+        font-size: 14px;
+      }
+
+      button {
+        min-height: 42px;
+        padding: 0 14px;
+        border: 1px solid var(--color-pine);
+        border-radius: 8px;
+        color: white;
+        background: var(--color-pine);
+        font-size: 14px;
+        font-weight: 650;
+      }
+    }
+  }
+
+  @media (max-width: 35rem) {
+    .announcement {
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+
+      span:first-child {
+        max-width: 58%;
+      }
+    }
+
+    .bar {
+      width: calc(100% - 28px);
+      gap: 10px;
+    }
+
+    .brand {
+      gap: 7px;
+    }
+
+    .brandMark {
+      width: 34px;
+      height: 34px;
+    }
+
+    .brandName {
+      font-size: 20px;
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    .actions {
+      gap: 7px;
+    }
+
+    .searchToggle,
+    .menuToggle {
+      width: 38px;
+      height: 38px;
+    }
+
+    .bagButton {
+      min-height: 38px;
+      gap: 6px;
+      padding: 0 9px;
+    }
+
+    .bagLabel {
+      display: none;
+    }
+  }
+}
