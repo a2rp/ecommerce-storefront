@@ -1,0 +1,63 @@
+﻿.toast {
+  position: fixed;
+  z-index: 2000;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(420px, calc(100vw - 32px));
+  min-height: 58px;
+  padding: 12px 14px;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 12px;
+  color: #fffdf8;
+  background: var(--color-pine-dark);
+  box-shadow: 0 16px 40px rgb(26 40 32 / 22%);
+  font-size: 14px;
+
+  & > svg {
+    flex: 0 0 auto;
+    width: 19px;
+    height: 19px;
+  }
+
+  & > span {
+    flex: 1;
+  }
+
+  & > button {
+    display: grid;
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 24%);
+    border-radius: 8px;
+    color: inherit;
+    background: transparent;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+
+    &:hover {
+      border-color: rgb(255 255 255 / 70%);
+    }
+
+    svg {
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  &.success > svg {
+    color: var(--color-leaf);
+  }
+
+  &.error > svg {
+    color: #ffb7a8;
+  }
+
+  @media (max-width: 42rem) {
+    right: 16px;
+    bottom: 16px;
+  }
+}
