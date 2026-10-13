@@ -1,0 +1,4 @@
+﻿.app { min-height: 100vh; display: flex; flex-direction: column; }
+.main { flex: 1 0 auto; min-height: 60vh; }
+.skipLink { position: fixed; z-index: 3000; top: 1rem; left: 1rem; padding: .7rem 1rem; border-radius: .4rem; color: white; background: var(--color-pine); transform: translateY(-160%); }
+.skipLink:focus { transform: translateY(0); }
