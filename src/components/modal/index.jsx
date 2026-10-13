@@ -1,0 +1,72 @@
+﻿import { useEffect, useId, useRef } from "react";
+import { FiX } from "react-icons/fi";
+import styles from "./styles.module.css";
+
+const Modal = ({ isOpen, title, description, onClose, children, initialFocusRef, size = "medium" }) => {
+  const dialogRef = useRef(null);
+  const id = useId();
+  const titleId = `morrow-dialog-title-${id}`;
+  const descriptionId = `morrow-dialog-description-${id}`;
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusTarget = initialFocusRef?.current || dialogRef.current?.querySelector("button, input, select, textarea, a[href]");
+    focusTarget?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+      }
+      if (event.key === "Tab") {
+        const focusable = [...dialogRef.current.querySelectorAll("button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), a[href]")];
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus?.();
+    };
+  }, [initialFocusRef, isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className={styles.backdrop} onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+      <section
+        className={[styles.dialog, styles[size] || styles.medium].join(" ")}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        aria-describedby={description ? descriptionId : undefined}
+        ref={dialogRef}
+      >
+        <header className={styles.header}>
+          <div>
+            <h2 id={titleId}>{title}</h2>
+            {description && <p id={descriptionId}>{description}</p>}
+          </div>
+          <button className={styles.close} type="button" onClick={onClose} aria-label="Close dialog"><FiX aria-hidden="true" /></button>
+        </header>
+        <div className={styles.body}>{children}</div>
+      </section>
+    </div>
+  );
+};
+
+export default Modal;
