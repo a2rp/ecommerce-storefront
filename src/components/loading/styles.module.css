@@ -2,19 +2,17 @@
   display: grid;
   min-height: 50vh;
   place-items: center;
+}
 
-  .spinner {
-    width: 38px;
-    height: 38px;
-    border: 3px solid #d7ddd1;
-    border-top-color: var(--color-pine);
-    border-radius: 50%;
-    animation: turn 800ms linear infinite;
-  }
+.spinner {
+  width: 38px;
+  height: 38px;
+  border: 3px solid #d7ddd1;
+  border-top-color: var(--color-pine);
+  border-radius: 50%;
+  animation: turn 800ms linear infinite;
+}
 
-  @keyframes turn {
-    to {
-      transform: rotate(360deg);
-    }
-  }
+@keyframes turn {
+  to { transform: rotate(360deg); }
 }
