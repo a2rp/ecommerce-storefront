@@ -1,0 +1,72 @@
+﻿.confirmation {
+  display: grid;
+  justify-items: center;
+  gap: 15px;
+  text-align: center;
+
+  .icon {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    border-radius: 50%;
+    color: #9c4739;
+    background: #f6e6df;
+
+    svg {
+      width: 23px;
+      height: 23px;
+    }
+  }
+
+  .itemName {
+    color: var(--color-ink);
+    font-size: 17px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 8px;
+
+    button {
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+    }
+  }
+
+  .keepButton {
+    border-color: var(--color-line) !important;
+    background: transparent;
+
+    &:hover {
+      border-color: var(--color-pine) !important;
+    }
+  }
+
+  .removeButton {
+    color: white;
+    background: #a9473f;
+
+    &:hover {
+      background: #87372f;
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .actions {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
