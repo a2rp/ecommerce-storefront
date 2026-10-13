@@ -3,7 +3,7 @@ import { FiAlertTriangle } from "react-icons/fi";
 import Modal from "../modal";
 import styles from "./styles.module.css";
 
-const ConfirmationDialog = ({ isOpen, title, itemName, description, confirmLabel = "Remove", onConfirm, onCancel }) => {
+const ConfirmationDialog = ({ isOpen, title, itemName, description, confirmLabel = "Remove", cancelLabel = "Keep item", onConfirm, onCancel }) => {
   const cancelRef = useRef(null);
 
   return (
@@ -12,7 +12,7 @@ const ConfirmationDialog = ({ isOpen, title, itemName, description, confirmLabel
         <span className={styles.icon}><FiAlertTriangle aria-hidden="true" /></span>
         {itemName && <strong className={styles.itemName}>{itemName}</strong>}
         <div className={styles.actions}>
-          <button ref={cancelRef} className={styles.keepButton} type="button" onClick={onCancel}>Keep item</button>
+          <button ref={cancelRef} className={styles.keepButton} type="button" onClick={onCancel}>{cancelLabel}</button>
           <button className={styles.removeButton} type="button" onClick={onConfirm}>{confirmLabel}</button>
         </div>
       </div>
@@ -21,3 +21,4 @@ const ConfirmationDialog = ({ isOpen, title, itemName, description, confirmLabel
 };
 
 export default ConfirmationDialog;
+
