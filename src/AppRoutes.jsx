@@ -19,7 +19,7 @@ const AppRoutes = (props) => {
   }, [location.pathname]);
 
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense key={location.pathname} fallback={<Loading />}>
       <Routes>
         <Route path="/" element={<Home {...props} />} />
         <Route path="/shop" element={<Shop {...props} />} />
@@ -34,3 +34,4 @@ const AppRoutes = (props) => {
 };
 
 export default AppRoutes;
+
