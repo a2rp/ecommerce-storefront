@@ -25,19 +25,24 @@ const App = () => {
   }, [toast]);
 
   const addToCart = useCallback((product, quantity = 1) => {
-    setCart((current) => {
-      const found = current.find((item) => item.id === product.id);
-      const nextQuantity = Math.min(product.stock, (found?.quantity || 0) + quantity);
-      if (found && found.quantity === nextQuantity) {
-        notify("That is all the available stock for this piece.", "info");
-        return current;
-      }
-      notify(`${product.name} added to your bag.`);
-      return found
-        ? current.map((item) => item.id === product.id ? { ...item, quantity: nextQuantity } : item)
-        : [...current, { ...product, quantity: Math.min(product.stock, quantity) }];
-    });
-  }, [notify]);
+    if (product.stock < 1) {
+      notify(`${product.name} is sold out.`, "info");
+      return;
+    }
+
+    const found = cart.find((item) => item.id === product.id);
+    const nextQuantity = Math.min(product.stock, (found?.quantity || 0) + quantity);
+    if (found && found.quantity === nextQuantity) {
+      notify("That is all the available stock for this piece.", "info");
+      return;
+    }
+
+    const nextCart = found
+      ? cart.map((item) => item.id === product.id ? { ...item, quantity: nextQuantity } : item)
+      : [...cart, { ...product, quantity: nextQuantity }];
+    setCart(nextCart);
+    notify(`${product.name} added to your bag.`);
+  }, [cart, notify]);
 
   const updateQuantity = useCallback((productId, quantity) => {
     const product = products.find((item) => item.id === productId);

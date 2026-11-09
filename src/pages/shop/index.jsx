@@ -7,9 +7,16 @@ import styles from "./styles.module.css";
 
 const Shop = ({ onAddToCart }) => {
   const [params, setParams] = useSearchParams();
-  const [query, setQuery] = useState(params.get("q") || "");
   const [sort, setSort] = useState("featured");
+  const query = params.get("q") || "";
   const selectedCategory = params.get("category") || "All pieces";
+
+  const setQuery = (value) => {
+    const next = new URLSearchParams(params);
+    if (value) next.set("q", value);
+    else next.delete("q");
+    setParams(next, { replace: true });
+  };
 
   const visibleProducts = useMemo(() => {
     const normalized = query.trim().toLowerCase();
